@@ -22,24 +22,42 @@ do
         else {
             {
                 Console.WriteLine($"Vas a evaluar {cantidadNotas} notas.");
+
+                int sumaNotas = 0;   // para acumular las notas válidas
+                int cantidadNotasValidas = 0; // para contar solo las notas correctas
+
                 for (int i = 0; i < cantidadNotas; i++)
                 {
                     try
                     {
                         Console.WriteLine("Ingrese sus notas");
                         int notas = Convert.ToInt32(Console.ReadLine());
-                        if (notas < 0 || notas >100)
+                        if (notas < 0 || notas > 100)
                         {
                             throw new Exception("Las notas deben de ser entre 0 y 100");
                         }
-                        
+
+                        sumaNotas += notas; // esto es igual que esto: sumaNotas = sumaNotas + notas;
+                        cantidadNotasValidas++;
                     }
                     catch (FormatException e)
                     {
                         Console.WriteLine("Valor invalido, ingrese un numero");
+                        i--; // para repetir esta nota en el ciclo
                     }
 
+                }//Fin de for
+
+                if (cantidadNotasValidas > 0)
+                {
+                    double promedio = (double)sumaNotas / cantidadNotasValidas;
+                    Console.WriteLine($"El promedio de sus notas es: {promedio}");
                 }
+                else
+                {
+                    Console.WriteLine("No se ingresaron notas válidas.");
+                }
+
 
             }
         }
