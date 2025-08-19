@@ -40,10 +40,15 @@ do
                         sumaNotas += notas; // esto es igual que esto: sumaNotas = sumaNotas + notas;
                         cantidadNotasValidas++;
                     }
-                    catch (FormatException e)
+                    catch (FormatException)
                     {
-                        Console.WriteLine("Valor invalido, ingrese un numero");
-                        i--; // para repetir esta nota en el ciclo
+                        Console.WriteLine("Valor inválido, ingrese un número.");
+                        i--; 
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Advertencia {ex.Message}");
+                        i--;
                     }
 
                 }//Fin de for
