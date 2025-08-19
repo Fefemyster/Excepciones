@@ -32,7 +32,7 @@ do
                     {
                         Console.WriteLine("Ingrese sus notas");
                         int notas = Convert.ToInt32(Console.ReadLine());
-                        if (notas < 0 || notas > 100)
+                        if (notas <= 0 || notas > 100)
                         {
                             throw new Exception("Las notas deben de ser entre 0 y 100");
                         }
